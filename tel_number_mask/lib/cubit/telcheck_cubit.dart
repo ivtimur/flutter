@@ -2,49 +2,22 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
+import '../check-mask.dart';
+
 part 'telcheck_state.dart';
 
 class TelcheckCubit extends Cubit<TelcheckState> {
   TelcheckCubit() : super(TelcheckInitial());
 
   Future<void> checkTel(TextEditingController val, {String mask = '+_ (___) ___ __ __'}) async {
-    Map<String, dynamic> res = await _check(val.text, val.selection.base.offset, mask);
+    
+    // just call CheckMask.checkTel(val, mask: mask)
+    // in default mask = '+_ (___) ___ __ __'
+    // also you can call this metod in StateFullWidget
 
-    val.value = TextEditingValue(
-      text: res['number'],
-      selection: TextSelection.fromPosition(
-          ((val.selection.base.offset + (res['pos'] as int)) < res['number'].length)
-              ? TextPosition(offset: (val.selection.base.offset + (res['pos'] as int)))
-              : TextPosition(offset: res['number'].length)),
-    );
+    val = await CheckMask.checkTel(val, mask: mask);
 
     emit(UpState(val));
   }
 
-  Future<Map<String, dynamic>> _check(String numberG, int pos, String mask) async {
-    String number = numberG;
-    if (number.length > mask.length)
-      number = number.substring(0, number.length - (number.length - mask.length));
-    String tmp = '';
-    int _pos = 0;
-    for (var i = 0; i < number.length; i++) {
-      if ('1234567890'.contains(number[i])) tmp += number[i];
-    }
-    number = '';
-    var j = 0;
-    for (var i = 0; i < mask.length; i++) {
-      if (j < tmp.length) {
-        if ((mask[i] == '_')) {
-          number += tmp[j];
-          j++;
-        } else {
-          if (mask[i] == tmp[j]) j++;
-          if (numberG.length == pos) _pos++;
-          number += mask[i];
-        }
-      }
-    }
-
-    return {'number': number, 'pos': _pos};
-  }
 }

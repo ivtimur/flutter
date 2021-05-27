@@ -13,3 +13,9 @@ You can change the mask format as you like
 >  <p>Example: "COD_ (___) ___ __ __"</p>
 
 In the mask, specify the "_" character in the place where the number should be
+
+<p>
+1. call CheckMask.checkTel(val, mask: mask)</br>
+2. Default mask = '+_ (___) ___ __ __'</br>
+3. also you can call this metod in StateFullWidget</br>
+</p>
