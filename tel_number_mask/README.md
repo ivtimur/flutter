@@ -12,7 +12,7 @@ You can change the mask format as you like
 >  <p>Example: "+__:___-___-____"</p>
 >  <p>Example: "COD_ (___) ___ __ __"</p>
 > or something else
->  <p>Example: "__-__-____" Result: 23:45:1234</p>
+>  <p>Example: "__:__:____" Result: 23:45:1234</p>
 > etc
 
 In the mask, specify the "_" character in the place where the number should be
