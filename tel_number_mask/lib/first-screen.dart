@@ -21,7 +21,14 @@ class TelNumberInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController telNumber = TextEditingController();
-
+    // You can change the mask format as you like
+    // Example: +_ (___) ___ __ __
+    // Example: +__-(___)-___-__-__
+    // Example: +__:___-___-____
+    // Example: +__:___-___-____
+    // Example: COD_ (___) ___ __ __
+    // In the mask, specify the _ character in the place where the number should be
+    const String mask = 'COD_ (___) ___ __ __';
     return Center(
       child: Container(
           child: BlocProvider(
@@ -32,6 +39,7 @@ class TelNumberInput extends StatelessWidget {
                 }
                 return TextFormField(
                   decoration: InputDecoration(
+                    labelText: 'Tel mask: $mask',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(width: 1, color: Colors.blueAccent),
                       borderRadius: BorderRadius.circular(15),
@@ -46,7 +54,7 @@ class TelNumberInput extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                   style: TextStyle(fontSize: 20),
                   onChanged: (val) {
-                    BlocProvider.of<TelcheckCubit>(context).checkTel(telNumber);
+                    BlocProvider.of<TelcheckCubit>(context).checkTel(telNumber, mask: mask);
                   },
                   maxLines: 1,
                 );

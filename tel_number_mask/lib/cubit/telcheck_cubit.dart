@@ -7,8 +7,8 @@ part 'telcheck_state.dart';
 class TelcheckCubit extends Cubit<TelcheckState> {
   TelcheckCubit() : super(TelcheckInitial());
 
-  Future<void> checkTel(TextEditingController val) async {
-    Map<String, dynamic> res = await _check(val.text, val.selection.base.offset);
+  Future<void> checkTel(TextEditingController val, {String mask = '+_ (___) ___ __ __'}) async {
+    Map<String, dynamic> res = await _check(val.text, val.selection.base.offset, mask);
 
     val.value = TextEditingValue(
       text: res['number'],
@@ -21,10 +21,10 @@ class TelcheckCubit extends Cubit<TelcheckState> {
     emit(UpState(val));
   }
 
-  Future<Map<String, dynamic>> _check(String numberG, int pos) async {
+  Future<Map<String, dynamic>> _check(String numberG, int pos, String mask) async {
     String number = numberG;
-    if (number.length > 18) number = number.substring(0, number.length - (number.length - 18));
-    const String filter = '+_ (___) ___ __ __';
+    if (number.length > mask.length)
+      number = number.substring(0, number.length - (number.length - mask.length));
     String tmp = '';
     int _pos = 0;
     for (var i = 0; i < number.length; i++) {
@@ -32,15 +32,15 @@ class TelcheckCubit extends Cubit<TelcheckState> {
     }
     number = '';
     var j = 0;
-    for (var i = 0; i < filter.length; i++) {
+    for (var i = 0; i < mask.length; i++) {
       if (j < tmp.length) {
-        if ((filter[i] == '_')) {
+        if ((mask[i] == '_')) {
           number += tmp[j];
           j++;
         } else {
-          if (filter[i] == tmp[j]) j++;
+          if (mask[i] == tmp[j]) j++;
           if (numberG.length == pos) _pos++;
-          number += filter[i];
+          number += mask[i];
         }
       }
     }

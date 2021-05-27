@@ -1,16 +1,13 @@
 # tel_number_mask
 
-A new Flutter project.
+Flutter project just show how work with mask on TextFormField widget.
 
-## Getting Started
+This example include mask telephone number like: +0 (000) 000 00 00
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+You can change the mask format as you like
+  Example: +_ (___) ___ __ __
+  Example: +__-(___)-___-__-__
+  Example: +__:___-___-____
+  Example: +__:___-___-____
+  Example: COD_ (___) ___ __ __
+In the mask, specify the _ character in the place where the number should be
