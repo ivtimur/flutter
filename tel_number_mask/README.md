@@ -5,7 +5,7 @@ Flutter project just show how work with mask on TextFormField widget.
 This example include mask telephone number like: +0 (000) 000 00 00
 
 You can change the mask format as you like
->  Example: "+_ (___) ___ __ __"
+<blink>  Example: "+_ (___) ___ __ __"</blink>
 >  Example: "+__-(___)-___-__-__"
 >  Example: "+__:___-___-____"
 >  Example: "+__:___-___-____"
