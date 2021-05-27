@@ -28,7 +28,7 @@ class TelNumberInput extends StatelessWidget {
     // Example: +__:___-___-____
     // Example: COD_ (___) ___ __ __
     // In the mask, specify the _ character in the place where the number should be
-    const String mask = 'COD_ (___) ___ __ __';
+    const String mask = '+_ (___) ___ __ __';
     return Center(
       child: Container(
           child: BlocProvider(
