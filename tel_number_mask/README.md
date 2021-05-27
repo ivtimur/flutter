@@ -14,7 +14,7 @@ You can change the mask format as you like
 
 In the mask, specify the "_" character in the place where the number should be
 
-- For use
+## For use ##
 <p>
 1. call CheckMask.checkTel(val, mask: mask)</br>
 2. Default mask = '+_ (___) ___ __ __'</br>
