@@ -6,6 +6,6 @@ abstract class TelcheckState {}
 class TelcheckInitial extends TelcheckState {}
 
 class UpState extends TelcheckState {
-  final TextEditingController val;
+  final TextEditingValue val;
   UpState(this.val);
 }

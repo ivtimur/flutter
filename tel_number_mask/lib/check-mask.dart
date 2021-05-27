@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 abstract class CheckMask {
-  static checkTel(TextEditingController val, {String mask = '+_ (___) ___ __ __'}) {
+  static checkTel(TextEditingValue val, {String mask = '+_ (___) ___ __ __'}) {
     Map<String, dynamic> res = _check(val.text, val.selection.base.offset, mask);
 
-    val.value = TextEditingValue(
+    val = TextEditingValue(
       text: res['number'],
       selection: TextSelection.fromPosition(
           ((val.selection.base.offset + (res['pos'] as int)) < res['number'].length)

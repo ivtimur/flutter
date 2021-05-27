@@ -35,11 +35,11 @@ class TelNumberInput extends StatelessWidget {
               create: (BuildContext context) => TelcheckCubit(),
               child: BlocBuilder<TelcheckCubit, TelcheckState>(builder: (context, state) {
                 if (state is UpState) {
-                  telNumber = state.val;
+                  telNumber.value = state.val;
                 }
                 return TextFormField(
                   decoration: InputDecoration(
-                    labelText: 'Tel mask: $mask',
+                    labelText: 'Mask: $mask',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(width: 1, color: Colors.blueAccent),
                       borderRadius: BorderRadius.circular(15),
@@ -54,7 +54,7 @@ class TelNumberInput extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                   style: TextStyle(fontSize: 20),
                   onChanged: (val) {
-                    BlocProvider.of<TelcheckCubit>(context).checkTel(telNumber, mask: mask);
+                    BlocProvider.of<TelcheckCubit>(context).checkTel(telNumber.value, mask: mask);
                   },
                   maxLines: 1,
                 );

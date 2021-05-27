@@ -9,7 +9,7 @@ part 'telcheck_state.dart';
 class TelcheckCubit extends Cubit<TelcheckState> {
   TelcheckCubit() : super(TelcheckInitial());
 
-  Future<void> checkTel(TextEditingController val, {String mask = '+_ (___) ___ __ __'}) async {
+  Future<void> checkTel(TextEditingValue val, {String mask = '+_ (___) ___ __ __'}) async {
     
     // just call CheckMask.checkTel(val, mask: mask)
     // in default mask = '+_ (___) ___ __ __'
